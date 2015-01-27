@@ -7,8 +7,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
     copy : {
       dist : {
-        src : ['<%= jshint.files %>'],
-        dest : ['dist/']
+        src : ['package.json','index.js','config.js','lib/**/*.js'],
+        dest : 'dist/'
       }
     },
     jshint : {
