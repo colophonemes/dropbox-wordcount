@@ -62,7 +62,7 @@ var readDB = function(callback){
 			return ( callback() );
 		}
 	});
-}
+};
 
 var buildDB = function(entries, callback){
 	var database = {};
@@ -83,7 +83,7 @@ var buildDB = function(entries, callback){
 			}
 			database[n] = {};
 
-			database[n]['name'] = entry;
+			database[n].name = entry;
 			client.readFile(PATH + '/' + entry, function(error, data) {
 				if(error){
 					return;
@@ -92,11 +92,11 @@ var buildDB = function(entries, callback){
 				console.log(wc + ' words');
 
 				if(new_entry){
-					database[n]['last_wordcount'] = 0;
-					database[n]['current_wordcount'] = wc;
+					database[n].last_wordcount = 0;
+					database[n].current_wordcount = wc;
 				} else {
-					database[n]['last_wordcount'] = db[n]['current_wordcount'];
-					database[n]['current_wordcount'] = wc;
+					database[n].last_wordcount = db[n].current_wordcount;
+					database[n].current_wordcount = wc;
 				}
 				readEntry( entries.shift() );
 			});
@@ -133,7 +133,7 @@ var compareDB = function(callback){
 				buildDB( entries, function(database){
 					difference = 0;
 					var changedDocs = [],x;
-					for(key in database) {
+					for(var key in database) {
 						x = Math.abs(database[key].current_wordcount - database[key].last_wordcount);
 						difference += x;
 						if(x>0){
@@ -153,7 +153,7 @@ var compareDB = function(callback){
 			);
 		})
 	);
-}
+};
 
 
 var doWordcount = function(callback){
@@ -200,33 +200,33 @@ var pingBeeminder = function(type,callback){
 									}
 								  };
 					console.log('Attempting to ping beeminder...');
-					return (
-						request.post(url,options,function(error,response,body){
-							console.log('Beeminder response: ',response.statusCode);
-						})
-					);
+					request.post(url,options,function(error,response,body){
+						console.log('Beeminder response: ',response.statusCode);
+						return;
+					});
 				} else {
 					console.log('No datapoint created, difference was 0');
 				}
+				if(callback){
+					return callback(difference);
+				}
+				return;
 			})
 		);
-	}
-	if(callback){
-		return callback(type);
 	}
 };
 
 
  /* serves main page */
  app.get("/", function(req, res) {
-	res.send('Permission denied')
+	res.send('Permission denied');
  });
 
 
  /* serves main page */
  app.get("/wordcount", function(req, res) {
  	pingBeeminder('wordcount', function(d){
- 		res.send('pinging beeminder... (function call was ' + d);
+ 		res.send('Wordcount difference: ' + d);
  	});
  });
 
