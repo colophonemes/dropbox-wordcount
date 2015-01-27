@@ -1,0 +1,28 @@
+{
+  "name": "CheckBox",
+  "version": "0.0.1",
+  "description": "Reads dropbox files",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/736a64/checkbox"
+  },
+  "keywords": [
+    "dropbox",
+    "node"
+  ],
+  "author": "Sam Deere",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/736a64/checkbox/issues"
+  },
+  "homepage": "https://github.com/736a64/checkbox",
+  "dependencies": {
+    "express": "^4.11.1",
+    "dropbox": "^0.10.3",
+    "request": "^2.51.0"
+  }
+}
