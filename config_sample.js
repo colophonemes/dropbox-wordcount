@@ -1,5 +1,5 @@
 // Configuration file
-
+// RENAME THIS FILE 'config.js'
 
 var config = {
 /////////////////////////////////////////////
