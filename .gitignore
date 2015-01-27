@@ -4,4 +4,4 @@ npm-debug.log
 .DS_Store
 /*.env
 /dist
-/config
+/config_real
