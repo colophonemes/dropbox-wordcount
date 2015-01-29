@@ -225,9 +225,8 @@ var pingBeeminder = function(type,callback){
 
  /* serves main page */
  app.get("/wordcount", function(req, res) {
- 	pingBeeminder('wordcount', function(d){
- 		res.send('Wordcount difference: ' + d);
- 	});
+	res.send('Running wordcount script');
+ 	pingBeeminder('wordcount');
  });
 
  /* serves all the static files */

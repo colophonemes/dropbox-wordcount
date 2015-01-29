@@ -7,7 +7,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     copy : {
       dist : {
-        src : ['package.json','index.js','config.js','lib/**/*.js'],
+        src : ['package.json','index.js','lib/**/*.js'],
         dest : 'dist/'
       }
     },
